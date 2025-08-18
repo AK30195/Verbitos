@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@layer base {
+  
+}
+
+@layer components {
+  .flashcard {
+    @apply m-2 border-2 rounded-sm
+  }
+}
