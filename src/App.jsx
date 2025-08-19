@@ -1,24 +1,21 @@
 import { useState, useEffect } from 'react';
 import supabase from './utils/supabase.js';
 import  useTenses  from './hooks/useTenses.js';
+import useVerbGroups from './hooks/useVerbGroups.js';
+import useVerbs from './hooks/useVerbs.js';
 
 import './styles/App.css'
 import Flashcard from './components/Flashcard.jsx';
+import QuizCard from './components/QuizCard.jsx';
+import usePronouns from './hooks/usePronouns.js';
 
 function App() {
 
-  const { tenses } = useTenses();
-  const [verbGroups, setVerbGroups] = useState([]);
-
-  useEffect(() => {
-    getVerbGroups();
-  }, []);
-
-
-  async function getVerbGroups() {
-    const { data } = await supabase.from("verb_groups").select();
-    setVerbGroups(data);
-  };
+  const { tenses } =  useTenses();
+  const { verbGroups } = useVerbGroups(1);
+  const { verbs } = useVerbs();
+  const { pronouns } = usePronouns();
+  
 
   return (
     <>
@@ -36,7 +33,13 @@ function App() {
           </li>
         ))}
       </ul>
-
+      {verbs.map((verb) => (
+           <QuizCard 
+            verb={verb}
+            tense={1}
+            pronoun={pronouns[0]}
+          />
+      ))}
     </>
   )
 }

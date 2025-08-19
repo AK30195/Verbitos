@@ -3,29 +3,28 @@ import AnswerInput from "./AnswerInput";
 import FeedbackBar from "./FeedbackBar";
 import supabase from "../utils/supabase";
 
-function Flashcard({tense_id, tense_name, verb_group, verb_group_ending}) {
+function Flashcard({ tense_id, tense_name, verb_group, verb_group_ending }) {
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [cardData, setCardData] = useState([]);
 
-    async function getEndings() {
-        const { data, error } = await supabase
-            .from('regular_verb_endings')
-            .select("*")
-            .eq('tense', tense_id)
-            .eq('verb_group', verb_group);
-
-        console.log(data);
-        if (!error) setCardData(data);
-    };
-
     useEffect(() => {
+        async function getEndings() {
+            const { data, error } = await supabase
+                .from('regular_verb_endings')
+                .select("*")
+                .eq('tense', tense_id)
+                .eq('verb_group', verb_group);
+
+            if (!error) setCardData(data);
+        };
+
         getEndings();
-    }, []);
+    }, [tense_id, verb_group]);
 
     return (
         <div className="flashcard">
-            {!isFlipped && 
+            {!isFlipped &&
                 (
                     <div onClick={() => setIsFlipped(true)}>
                         <p>List the {tense_name} tense endings for regular verbs ending with '{verb_group_ending}'</p>
@@ -41,7 +40,6 @@ function Flashcard({tense_id, tense_name, verb_group, verb_group_ending}) {
                     </ul>
                 )
             }
-            <AnswerInput />
             <FeedbackBar />
         </div>
     )

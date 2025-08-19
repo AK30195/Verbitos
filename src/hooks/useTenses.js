@@ -6,8 +6,6 @@ export default function useTenses(tense_id = null) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
 
-
-
     useEffect(() => {
         async function fetchTenses() {
             setLoading(true);
@@ -21,10 +19,10 @@ export default function useTenses(tense_id = null) {
                 const { data, error } = await query;
 
                 if (error) throw error;
-                setTenses(data); 
+                setTenses(data);
             } catch (err) {
                 setError(err);
-                setTenses([]); 
+                setTenses([]);
             } finally {
                 setLoading(false);
             }
@@ -33,6 +31,6 @@ export default function useTenses(tense_id = null) {
         fetchTenses();
     }, [tense_id]);
 
-    return { tenses, error, loading };
+    return { tenses, loading, error };
 }
 
