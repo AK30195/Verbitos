@@ -1,46 +1,28 @@
-import { useState, useEffect } from 'react';
-import supabase from './utils/supabase.js';
-import  useTenses  from './hooks/useTenses.js';
-import useVerbGroups from './hooks/useVerbGroups.js';
-import useVerbs from './hooks/useVerbs.js';
-
-import './styles/App.css'
-import Flashcard from './components/Flashcard.jsx';
-import QuizCard from './components/QuizCard.jsx';
-import usePronouns from './hooks/usePronouns.js';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import './styles/App.css';
+import Dashboard from "./pages/Dashboard";
+import FlashcardView from "./pages/FlashcardView";
+import PracticeView from "./pages/PracticeView";
+import TensesView from "./pages/TensesView";
+import Navbar from "./components/Navbar";
 
 function App() {
 
-  const { tenses } =  useTenses();
-  const { verbGroups } = useVerbGroups(1);
-  const { verbs } = useVerbs();
-  const { pronouns } = usePronouns();
-  
-
   return (
-    <>
-      <ul>
-        {tenses.map((tense) => (
-          <li key={tense.tense_id}>
-            {verbGroups.map((verbGroup) => (
-              <Flashcard
-                tense_id={tense.tense_id}
-                tense_name={tense.name}
-                verb_group={verbGroup.group_id}
-                verb_group_ending={verbGroup.inf_ending}
-              />
-            ))}
-          </li>
-        ))}
-      </ul>
-      {verbs.map((verb) => (
-           <QuizCard 
-            verb={verb}
-            tense={1}
-            pronoun={pronouns[0]}
-          />
-      ))}
-    </>
+    <Router>
+      <header>
+        <Navbar />
+      </header>
+
+      <main>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/practice" element={<PracticeView />} />
+          <Route path="/flashcards" element={<FlashcardView />} />
+          <Route path="/tenses" element={<TensesView />} />
+        </Routes>
+      </main>
+    </Router>
   )
 }
 

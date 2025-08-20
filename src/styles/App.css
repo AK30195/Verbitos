@@ -1,11 +1,63 @@
 @import "tailwindcss";
 
 @layer base {
-  
+  h1 {
+    @apply justify-center text-4xl font-semibold;
+  }
+
+  h2 {
+    @apply justify-center text-2xl font-semibold;
+  }
 }
 
 @layer components {
+
+  .navbar {
+    @apply bg-gray-800 text-gray-200 px-6 py-3 shadow-md sticky top-0 z-50;
+  }
+
+  .nav-links-div {
+    @apply flex w-full
+  }
+
+  .logo-home-link {
+    @apply flex
+  }
+
+  .main-nav-links {
+    @apply flex gap-6 w-full justify-end
+  }
+
+  .dashboard-main {
+
+  }
+
+  .hero-div {
+    @apply flex-col w-screen justify-center items-center p-4 mt-4
+  }
+
+  .hero-tagline {
+    @apply flex w-full justify-center items-center my-2
+  }
+
+  .hero-subheading {
+    @apply flex w-full justify-center items-center my-2
+  }
+
+  .hero-text {
+    @apply flex w-full justify-center items-center mt-3
+  }
+
+  .hero-button-div {
+    @apply flex w-full justify-center items-center my-2
+  }
+
+  .hero-button {
+    @apply p-2 border-2 rounded-lg
+  }
+
   .flashcard {
     @apply m-2 border-2 rounded-sm
   }
+
 }
