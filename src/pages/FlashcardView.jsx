@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import FilterSelect from '../components/FilterSelect.jsx';
 import Flashcard from '../components/Flashcard.jsx';
 import useTenses from '../hooks/useTenses.js';
@@ -12,32 +12,51 @@ function FlashcardView() {
   const [selectedTenses, setSelectedTenses] = useState([]);
   const [selectedGroups, setSelectedGroups] = useState([]);
 
+  const groupedTenseOptions = useMemo(() => [
+    {
+      label: 'Indicative',
+      options: tenses.filter((t) => t.mood === 1)
+        .map((t) => ({value: t.tense_id, label: t.name}))
+    },
+    {
+      label: 'Subjunctive',
+      options: tenses.filter((t) => t.mood === 2)
+        .map((t) => ({value: t.tense_id, label: t.name}))
+    },
+    {
+      label: 'Imperative',
+      options: tenses.filter((t) => t.mood === 3)
+        .map((t) => ({value: t.tense_id, label: t.name}))
+    },
+  ], [tenses]);
+
   function getFilteredFlashcards() {
+    // Filter by tense
     const filteredTenses = tenses.filter(
       (tense) =>
-        selectedTenses.length === 0 ||
-        selectedTenses.some((s) => s.value === tense.tense_id)
+        (selectedTenses.length === 0 ||
+          selectedTenses.some((s) => s.value === tense.tense_id)) 
     );
-
+    // Filter by verb ending
     const filteredGroups = verbGroups.filter(
       (group) =>
         selectedGroups.length === 0 ||
         selectedGroups.some((s) => s.value === group.group_id)
     );
 
-    // build flashcard components
+    // Render flashcards that fit selected filters 
     return filteredTenses.flatMap((tense) =>
       filteredGroups.map((group) => (
         <Flashcard
           key={`${tense.tense_id}-${group.group_id}`}
-          tense_id={tense.tense_id}
-          tense_name={tense.name}
-          verb_group={group.group_id}
-          verb_group_ending={group.inf_ending}
+          tense={tense}
+          verb_group={group}
         />
       ))
-    );
-  }
+    )
+      ;
+  };
+
 
   const flashcards = getFilteredFlashcards();
 
@@ -46,21 +65,21 @@ function FlashcardView() {
       <div>
         <FilterSelect
           category={'tenses'}
-          options={tenses.map((t) => ({ value: t.tense_id, label: t.name }))}
+          options={groupedTenseOptions}
+          value={selectedTenses}
           onChange={(selected) => setSelectedTenses(selected || [])}
         />
       </div>
       <div>
         <FilterSelect
           category="verb groups"
-          options={verbGroups.map((g) => ({value: g.group_id,
+          options={verbGroups.map((g) => ({
+            value: g.group_id,
             label: g.inf_ending,
           }))}
+          value={selectedGroups}
           onChange={(selected) => setSelectedGroups(selected || [])}
         />
-      </div>
-      <div>
-        <FilterSelect />
       </div>
       <ul>
         {flashcards}

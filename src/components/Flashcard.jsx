@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import AnswerInput from "./AnswerInput";
 import FeedbackBar from "./FeedbackBar";
 import supabase from "../utils/supabase";
 
-function Flashcard({ tense_id, tense_name, verb_group, verb_group_ending }) {
+function Flashcard({tense, verb_group }) {
 
     const [isFlipped, setIsFlipped] = useState(false);
     const [cardData, setCardData] = useState([]);
@@ -13,21 +12,21 @@ function Flashcard({ tense_id, tense_name, verb_group, verb_group_ending }) {
             const { data, error } = await supabase
                 .from('regular_verb_endings')
                 .select("*")
-                .eq('tense', tense_id)
-                .eq('verb_group', verb_group);
+                .eq('tense', tense.tense_id)
+                .eq('verb_group', verb_group.group_id);
 
             if (!error) setCardData(data);
         };
 
         getEndings();
-    }, [tense_id, verb_group]);
+    }, [ tense, verb_group]);
 
     return (
         <div className="flashcard">
             {!isFlipped &&
                 (
                     <div onClick={() => setIsFlipped(true)}>
-                        <p>List the {tense_name} tense endings for regular verbs ending with '{verb_group_ending}'</p>
+                        <p>List the {tense.name} tense endings for regular verbs ending with '{verb_group.inf_ending}'</p>
                     </div>
                 )
             }
