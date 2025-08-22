@@ -1,17 +1,17 @@
 import Select from "react-select";
 
 
- function FilterSelect({category, options, value, onChange}) {
+ function FilterSelect({category, options, value, onChange, isMulti = true, closeMenu = false}) {
 
   return (
     <Select
-      isMulti
-      closeMenuOnSelect={false}
       options={options}
       className="filter-select"
       placeholder={`Select ${category}`}
       value={value}
       onChange={onChange}
+      isMulti={isMulti}
+      closeMenuOnSelect={closeMenu}
     />
   );
 }

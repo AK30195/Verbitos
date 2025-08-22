@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/practice" element={<PracticeView />} />
           <Route path="/flashcards" element={<FlashcardView />} />
-          <Route path="/tenses" element={<TensesView />} />
+          <Route path="/moods-tenses" element={<TensesView />} />
         </Routes>
       </main>
     </Router>

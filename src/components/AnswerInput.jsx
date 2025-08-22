@@ -1,25 +1,25 @@
 import { useState } from "react";
 
 
-function AnswerInput({ correctAnswer }) {
-    const [answer, setAnswer] = useState("");
+function AnswerInput({ correctAnswer, answer, setAnswer }) {
+
     const [status, setStatus] = useState('typing');
 
     function handleChange(e) {
         setAnswer(e.target.value);
+        setStatus('typing');
     };
 
     function handleSubmit(e) {
         e.preventDefault();
         setStatus('submitting');
         if (answer.toLowerCase() === correctAnswer) {
-            setStatus('success')
+            setStatus('success');
+            setAnswer(correctAnswer);
         } else {
-            setStatus('typing');
-            alert('Incorrect answer')
+            setStatus('fail');
         }
     };
-
 
     return (
         <div>
@@ -40,7 +40,15 @@ function AnswerInput({ correctAnswer }) {
                 {status === 'success' && (
                     <p>Correct!</p>
                 )}
+                {status === 'fail' && (
+                    <p>Incorrect! Try again.</p>
+                )}
             </form>
+            <button
+                onClick={() => setAnswer('RevealAnswer')}
+            >
+                Reveal Answer
+            </button>
         </div>
     )
 }
