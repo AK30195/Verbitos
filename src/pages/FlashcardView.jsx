@@ -21,17 +21,17 @@ function FlashcardView() {
 
   // Returns array of Flashcards depending on filters chosen by user
   function getFilteredFlashcards() {
-    // Filter by tense
+    // Filter by tenses returned from FilterSelect onChange
     const filteredTenses = tenses.filter(
       (tense) =>
       (selectedTenses.length === 0 ||
-        selectedTenses.some((s) => s.value === tense.tense_id))
+        selectedTenses.some((t) => t.value === tense.tense_id))
     );
     // Filter by verb ending
     const filteredGroups = verbGroups.filter(
       (group) =>
         selectedGroups.length === 0 ||
-        selectedGroups.some((s) => s.value === group.group_id)
+        selectedGroups.some((g) => g.value === group.group_id)
     );
 
     // Render flashcards that fit selected filters 
