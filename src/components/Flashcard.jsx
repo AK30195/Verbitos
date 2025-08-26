@@ -2,46 +2,80 @@ import { useEffect, useState } from "react";
 import FeedbackBar from "./FeedbackBar";
 import supabase from "../utils/supabase";
 
-function Flashcard({tense, verb_group }) {
+function Flashcard({ tense, verb_group, pronouns }) {
 
-    const [isFlipped, setIsFlipped] = useState(false);
-    const [cardData, setCardData] = useState([]);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [cardData, setCardData] = useState([]);
 
-    useEffect(() => {
-        async function getEndings() {
-            const { data, error } = await supabase
-                .from('regular_verb_endings')
-                .select("*")
-                .eq('tense', tense.tense_id)
-                .eq('verb_group', verb_group.group_id);
+  let displayPronouns = pronouns;
 
-            if (!error) setCardData(data);
-        };
+  // Change pronouns for imperative as doesn't include él/ella or ellos/ellas
+  if (tense.name === 'Affirmative Imperative' || tense.name === 'Negative Imperative') {
+    displayPronouns = pronouns.map((p) => {
+      if (p.pronoun === 'él/ella/usted') {
+        return { ...p, pronoun: 'usted' };
+      }
+      if (p.pronoun === 'ellos/ellas/ustedes') {
+        return { ...p, pronoun: 'ustedes' };
+      }
+      return p;
+    });
+  }
 
-        getEndings();
-    }, [ tense, verb_group]);
+  useEffect(() => {
+    async function getEndings() {
+      const { data, error } = await supabase
+        .from('regular_verb_endings')
+        .select("*")
+        .eq('tense', tense.tense_id)
+        .eq('verb_group', verb_group.group_id)
+        .order('pronoun');
 
-    return (
-        <div className="flashcard">
-            {!isFlipped &&
-                (
-                    <div onClick={() => setIsFlipped(true)}>
-                        <p>List the {tense.name} tense endings for regular verbs ending with '{verb_group.inf_ending}'</p>
+      if (!error) setCardData(data);
+    };
+    getEndings();
+  }, [tense, verb_group]);
+
+  return (
+    <div className="flashcard">
+      {!isFlipped &&
+        (
+          <div onClick={() => setIsFlipped(true)} className="flashcard-front">
+            <div className="flashcard-content-div">
+              <p>List the {tense.name} tense endings for regular verbs ending with '{verb_group.inf_ending}'</p>
+            </div>
+          </div>
+        )
+      }
+      {isFlipped &&
+        (
+          <div onClick={() => setIsFlipped(false)} className="flashcard-back">
+            <div className="flashcard-content-div">
+              <div>
+                <h3>{tense.name} endings for '{verb_group.inf_ending}' verbs</h3>
+              </div>
+              <div className="flashcard-endings-grid">
+                {cardData.map((data) => {
+                const pronounObj = displayPronouns.find((p) => p.pp_id === data.pronoun);
+                return (
+                  <div className="flashcard-endings-row" key={data.id} >
+                    <div className="pronoun-container">
+                      {pronounObj ? pronounObj.pronoun : "?"}
                     </div>
-                )
-            }
-            {isFlipped &&
-                (
-                    <ul onClick={() => setIsFlipped(false)}>
-                        {cardData.map((data) => (
-                            <li key={data.id}>{data.ending}</li>
-                        ))}
-                    </ul>
-                )
-            }
-            <FeedbackBar />
-        </div>
-    )
+                    <div className="ending-container">
+                      -{data.ending}
+                    </div>
+                  </div>
+                );
+              })}
+              </div>
+            </div>
+          </div>
+        )
+      }
+      <FeedbackBar />
+    </div>
+  )
 }
 
 export default Flashcard;

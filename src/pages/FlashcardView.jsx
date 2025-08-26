@@ -4,6 +4,7 @@ import Flashcard from '../components/Flashcard.jsx';
 import useTenses from '../hooks/useTenses.js';
 import useVerbGroups from '../hooks/useVerbGroups.js';
 import useTensesGroupedByMood from '../hooks/useTensesGroupedByMood.js';
+import usePronouns from '../hooks/usePronouns.js';
 import useMoods from '../hooks/useMoods.js';
 import DataFetcher from '../components/DataFetcher.jsx';
 
@@ -12,6 +13,7 @@ function FlashcardView() {
   const { moods, loading: moodsLoading, error: moodsError } = useMoods();
   const { tenses, loading: tensesLoading, error: tensesError } = useTenses();
   const { verbGroups, loading: groupsLoading, error: groupsError } = useVerbGroups();
+  const { pronouns, loading: pronounsLoading, error: pronounsError } = usePronouns();
 
   const [selectedTenses, setSelectedTenses] = useState([]);
   const [selectedGroups, setSelectedGroups] = useState([]);
@@ -19,7 +21,7 @@ function FlashcardView() {
   // Returns tenses grouped by mood for FilterSelect component
   const groupedTenseOptions = useTensesGroupedByMood(tenses, moods);
 
-  // Returns array of Flashcards depending on filters chosen by user
+  // Returns array of Flashcards matching filters chosen by user
   function getFilteredFlashcards() {
     // Filter by tenses returned from FilterSelect onChange
     const filteredTenses = tenses.filter(
@@ -41,6 +43,7 @@ function FlashcardView() {
           key={`${tense.tense_id}-${group.group_id}`}
           tense={tense}
           verb_group={group}
+          pronouns={pronouns}
         />
       )));
   };
@@ -50,19 +53,17 @@ function FlashcardView() {
   return (
     <div>
       <DataFetcher
-        loading={moodsLoading || tensesLoading || groupsLoading}
-        error={moodsError || tensesError || groupsError}
+        loading={moodsLoading || tensesLoading || groupsLoading || pronounsLoading}
+        error={moodsError || tensesError || groupsError || pronounsError}
         loadingText='Fetching flashcard data...'
       ></DataFetcher>
-      <div>
+      <div className='filter-select-container'>
         <FilterSelect
           category='tenses'
           options={groupedTenseOptions}
           value={selectedTenses}
           onChange={(selected) => setSelectedTenses(selected || [])}
         />
-      </div>
-      <div>
         <FilterSelect
           category='verb groups'
           options={verbGroups.map((g) => ({
