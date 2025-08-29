@@ -93,7 +93,8 @@ function PracticeView() {
         loading={verbsLoading || pronounsLoading || moodsLoading || tensesLoading || groupsLoading}
         error={verbsError || pronounsError || moodsError || tensesError || groupsError}
         loadingText="Fetching practice data..."
-      ></DataFetcher>
+      >
+      </DataFetcher>
       <div className='practice-heading'>
         <h2>Conjugation Practice</h2>
       </div>
@@ -161,11 +162,13 @@ function PracticeView() {
         />
       )}
       {stage === "finished" && (
-        <div>
+        <div className='practice-complete-div'>
           <h2>Practice Complete 🎉</h2>
-          <button onClick={() => setStage("setup")}>
+          <div className='practice-btn-container'>
+            <button onClick={() => setStage("setup")}>
             Start Again
           </button>
+          </div>
         </div>
       )}
     </>

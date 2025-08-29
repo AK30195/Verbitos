@@ -40,34 +40,40 @@ function Flashcard({ tense, verb_group, pronouns }) {
     <div className="flashcard">
       {!isFlipped &&
         (
-          <div onClick={() => setIsFlipped(true)} className="flashcard-front">
-            <div className="flashcard-content-div">
-              <p>List the {tense.name} tense endings for regular verbs ending with '{verb_group.inf_ending}'</p>
+          <div  className="flashcard-front">
+            <div className="flashcard-content-div" onClick={() => setIsFlipped(true)}>
+              <p>List the <span className="tense-highlight">{tense.name}</span>  tense endings for regular verbs ending with <span className="ending-highlight">'{verb_group.inf_ending}'</span></p>
             </div>
           </div>
         )
       }
       {isFlipped &&
         (
-          <div onClick={() => setIsFlipped(false)} className="flashcard-back">
-            <div className="flashcard-content-div">
+          <div className="flashcard-back">
+            <div className="flashcard-content-div" onClick={() => setIsFlipped(false)} >
               <div>
                 <h3>{tense.name} endings for '{verb_group.inf_ending}' verbs</h3>
               </div>
               <div className="flashcard-endings-grid">
                 {cardData.map((data) => {
-                const pronounObj = displayPronouns.find((p) => p.pp_id === data.pronoun);
-                return (
-                  <div className="flashcard-endings-row" key={data.id} >
-                    <div className="pronoun-container">
-                      {pronounObj ? pronounObj.pronoun : "?"}
+                  const pronounObj = displayPronouns.find((p) => p.pp_id === data.pronoun);
+                  return (
+                    <div className="flashcard-endings-row" key={data.id} >
+                      <div className="pronoun-container">
+                        {pronounObj ? pronounObj.pronoun : "?"}
+                      </div>
+                      <div className="ending-container">
+                        -{data.ending}
+                      </div>
                     </div>
-                    <div className="ending-container">
-                      -{data.ending}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              <div>
+                <p>Formed by {tense.conjugation_method} </p>
+              </div>
+              <div>
+                <p>Example - </p>
               </div>
             </div>
           </div>

@@ -30,19 +30,24 @@ function AnswerInput({ correctAnswer, answer, setAnswer }) {
                     value={answer}
                     onChange={handleChange}
                     type="text"
+                    autoFocus
                 />
+                {status === 'success' && (
+                    <p style={{color: 'green'}}>
+                        Correct!
+                    </p>
+                )}
+                {status === 'fail' && (
+                    <p style={{color: 'red'}}>
+                        Incorrect! Try again.
+                    </p>
+                )}
                 <button
                     disabled={status === 'submitting'
                         || status === 'success'}
                 >
                     Check
                 </button>
-                {status === 'success' && (
-                    <p>Correct!</p>
-                )}
-                {status === 'fail' && (
-                    <p>Incorrect! Try again.</p>
-                )}
             </form>
             <button
                 onClick={() => setAnswer('RevealAnswer')}

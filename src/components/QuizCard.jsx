@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AnswerInput from "./AnswerInput";
 import supabase from "../utils/supabase";
+import Loader from "./Loader";
 
 function QuizCard({ verb, tense, pronoun, onNext }) {
 
@@ -16,7 +17,7 @@ function QuizCard({ verb, tense, pronoun, onNext }) {
           .eq('verb', verb.verb_id)
           .eq('tense', tense.tense_id)
           .eq('pronoun', pronoun.pp_id)
-        console.log(data);
+        
         if (error) throw error;
         setCorrectAnswer(data[0].conjugated_form);
       } catch (e) {
@@ -30,20 +31,32 @@ function QuizCard({ verb, tense, pronoun, onNext }) {
 
   return (
     <div className="quizcard-div">
+      {!correctAnswer &&
+        <Loader />
+      }
       {(answer === 'RevealAnswer') &&
         <>
-          <p>
-            The answer is: {`${pronoun.pronoun} ${correctAnswer}`}
-          </p>
+          <div className="quizcard-text-container">
+            <p>
+              The answer is:
+            </p>
+          </div>
+          <div className="quizcard-text-container correct-answer">
+            <p>
+              {`${pronoun.pronoun} ${correctAnswer}`}
+            </p>
+          </div>
         </>
       }
       {(answer !== correctAnswer) && (answer !== 'RevealAnswer') &&
         <>
+          <h3>{tense.name}</h3>
           <div className="quizcard-text-container">
-            <p>Fill in the blank with the correct conjugation for {verb.infinitive} ({verb.translation}) in the {tense.name} tense.
-          </p>
+            <p>Fill in the blank with the correct conjugation for
+            </p>
           </div>
-          <div>
+          <h3>{verb.infinitive} ({verb.translation})</h3>
+          <div className="quizcard-text-container">
             <p>{pronoun.pronoun} ________</p>
           </div>
           <AnswerInput
@@ -55,13 +68,18 @@ function QuizCard({ verb, tense, pronoun, onNext }) {
       }
       {(correctAnswer && answer === correctAnswer) &&
         <>
-          <p>
-            Correct! The answer is: {`${pronoun.pronoun} ${correctAnswer}`}
-          </p>
+          <div className="quizcard-text-container">
+            <p>
+              Correct! The answer is:
+            </p>
+          </div>
+          <div className="quizcard-text-container correct-answer">
+            <p>{`${pronoun.pronoun} ${correctAnswer}`}</p>
+          </div>
         </>
       }
       <div>
-        {(answer === correctAnswer || answer === "RevealAnswer") && (
+        {correctAnswer && (answer === correctAnswer || answer === "RevealAnswer") && (
           <button onClick={onNext}>Next</button>
         )}
       </div>

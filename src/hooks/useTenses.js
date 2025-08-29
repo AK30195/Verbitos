@@ -10,7 +10,8 @@ export default function useTenses(tense_id = null) {
         async function fetchTenses() {
             setLoading(true);
             try {
-                let query = supabase.from("tenses").select();
+                let query = supabase.from("tenses").select()
+                .order('mood');
 
                 if (tense_id) {
                     query = query.eq("tense_id", tense_id);

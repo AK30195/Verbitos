@@ -4,9 +4,9 @@ import '../styles/App.css';
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <ul className="nav-links-div">
-        <div className="logo-home-link">
-          <li>
+      <ul className="nav-links-container">
+        <div className="logo-link-div">
+          <li className="nav-link">
             <NavLink
               to="/"
               end
@@ -19,8 +19,8 @@ export default function Navbar() {
             </NavLink>
           </li>
         </div>
-        <div className="main-nav-links">
-           <li>
+        <div className="nav-links-div">
+           <li className="nav-link">
             <NavLink
               to="/moods-tenses"
               className={({ isActive }) =>
@@ -28,10 +28,10 @@ export default function Navbar() {
                 }`
               }
             >
-              Moods & Tenses
+              Tenses
             </NavLink>
           </li>
-          <li>
+          <li className="nav-link">
             <NavLink
               to="/flashcards"
               className={({ isActive }) =>
@@ -42,7 +42,7 @@ export default function Navbar() {
               Flashcards
             </NavLink>
           </li>
-          <li>
+          <li className="nav-link">
             <NavLink
               to="/practice"
               className={({ isActive }) =>

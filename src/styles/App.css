@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@layer base {
+@layer base { 
   h1 {
-    @apply justify-center text-4xl font-semibold;
+    @apply justify-center text-4xl font-semibold text-pretty text-center;
   }
 
   h2 {
@@ -13,9 +13,17 @@
     @apply flex-center text-lg font-semibold;
   }
 
+  p {
+    @apply text-pretty text-center text-lg
+  }
+
   button {
-    @apply flex-center p-2 border-2 m-1 border-indigo-800 rounded-lg bg-indigo-200 w-40
+    @apply flex-center p-2 border-2 m-2 border-indigo-800 rounded-lg bg-indigo-200 w-40
     hover:bg-indigo-400 font-semibold cursor-pointer
+  }
+
+  input {
+    @apply flex-center m-1 w-40 p-1 border-2 border-indigo-300 rounded-md
   }
 }
 
@@ -25,16 +33,20 @@
     @apply bg-gray-800 text-gray-200 px-6 py-3 shadow-md sticky top-0 z-50;
   }
 
-  .nav-links-div {
+  .nav-links-container {
     @apply flex w-full
   }
 
-  .logo-home-link {
-    @apply flex
+  .logo-link-div {
+    @apply flex mr-3
   }
 
-  .main-nav-links {
-    @apply flex gap-6 w-full justify-end
+  .nav-links-div {
+    @apply flex gap-3 lg:gap-6 w-full justify-end
+  }
+
+  .nav-link {
+    @apply flex p-1 text-center items-center
   }
 
   .dashboard-main {}
@@ -68,7 +80,7 @@
   }
 
   .flashcard {
-    @apply flex-center m-2
+    @apply flex-center m-4
   }
 
   .flashcard-front {
@@ -80,7 +92,7 @@
   }
 
   .flashcard-content-div {
-    @apply flex-center flex-col p-2 border-2 border-indigo-900 rounded-xl w-full lg:w-1/2 hover:bg-slate-100 cursor-pointer
+    @apply flex-center flex-col p-2 border-2 border-indigo-900 rounded-xl w-full md:w-2/3 lg:w-1/3 xl:w-1/4 hover:bg-slate-100 cursor-pointer
   }
 
   .flashcard-endings-grid {
@@ -92,7 +104,7 @@
   }
 
   .pronoun-container {
-    @apply w-1/2 md:w-1/4 p-1 text-center rounded-md border-indigo-400 border-y-1 
+    @apply w-1/2  p-1 text-center rounded-md border-indigo-400 border-y-1 
     border-x-3 mb-1 bg-indigo-200 
   }
 
@@ -100,8 +112,16 @@
     @apply w-1/2 md:w-1/4 p-1 text-center rounded-md border-indigo-300 border-y-1 border-x-3  mb-1 bg-indigo-100
   }
 
+  .tense-highlight {
+    @apply text-indigo-400
+  }
+
+  .ending-highlight {
+    @apply text-fuchsia-500
+  }
+
   .filter-select-container {
-    @apply flex-center flex-col gap-12 p-3
+    @apply flex-center flex-col gap-6 p-3
   }
 
   .filter-select {
@@ -120,12 +140,20 @@
     @apply flex-center m-2
   }
 
+  .practice-complete-div {
+    @apply flex-center flex-col m-6 p-4 
+  }
+
   .quizcard-div {
-    @apply flex-center mx-10 flex-col border-2
+    @apply flex-center mx-10 p-4 flex-col border-2  border-indigo-900 rounded-xl hover:bg-slate-100
   }
 
   .quizcard-text-container {
     @apply flex-center m-1 p-3
+  }
+
+  .correct-answer {
+    @apply text-indigo-500 font-semibold
   }
 
 }
