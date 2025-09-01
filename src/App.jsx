@@ -5,6 +5,7 @@ import FlashcardView from "./pages/FlashcardView";
 import PracticeView from "./pages/PracticeView";
 import TensesView from "./pages/TensesView";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
           <Route path="/moods-tenses" element={<TensesView />} />
         </Routes>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </Router>
   )
 }
