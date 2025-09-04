@@ -50,7 +50,7 @@ function QuizCard({ verb, tense, pronoun, onNext }) {
       }
       {(answer !== correctAnswer) && (answer !== 'RevealAnswer') &&
         <>
-          <h3>{tense.name}</h3>
+          <h3 className="tense-highlight">{tense.name}</h3>
           <div className="quizcard-text-container">
             <p>Fill in the blank with the correct conjugation for
             </p>

@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import './App.css';
+
+@layer base {
+  p {
+    @apply text-center my-1 p-1
+  }
+
+}
+
+@layer components {
+
+  .section-container {
+    @apply p-2 m-2 flex-center flex-col
+  }
+
+  .card-ul {
+    @apply px-6 flex-center flex-col items-start text-center
+  }
+
+  .double-card-container {
+    @apply flex-center flex-col sm:flex-row items-stretch
+  }
+
+  .card-div {
+    @apply flex-center flex-col p-2 border-2 rounded-xl m-2 border-indigo-300 shadow-lg
+    md:w-1/2 
+  }
+
+  .tenses-heading {
+    @apply m-2 p-2
+  }
+
+
+}
+
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}

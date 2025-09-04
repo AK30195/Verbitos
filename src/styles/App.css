@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@layer base { 
+@layer base {
   body {
     @apply flex flex-col min-h-screen
   }
@@ -18,10 +18,14 @@
   }
 
   h2 {
-    @apply justify-center text-2xl font-semibold;
+    @apply justify-center text-center text-2xl font-semibold;
   }
 
   h3 {
+    @apply flex-center text-xl font-semibold;
+  }
+
+  h4 {
     @apply flex-center text-lg font-semibold;
   }
 
@@ -29,9 +33,16 @@
     @apply text-pretty text-center text-lg
   }
 
+  ul {
+    @apply list-disc
+  }
+
+  li {
+    @apply text-pretty text-start text-lg
+  }
+
   button {
-    @apply flex-center p-2 border-2 m-2 border-indigo-800 rounded-lg bg-indigo-200 w-40
-    hover:bg-indigo-400 font-semibold cursor-pointer
+    @apply flex-center p-2 border-2 m-2 border-indigo-800 rounded-lg bg-indigo-200 w-40 hover:bg-indigo-400 font-semibold cursor-pointer
   }
 
   input {
@@ -88,7 +99,7 @@
   }
 
   .hero-button {
-    @apply flex-center p-2 border-2 m-1 border-indigo-800 rounded-lg bg-indigo-200 hover:bg-indigo-400 font-semibold
+    @apply flex-center p-2 border-2 m-1 border-indigo-800 rounded-lg bg-indigo-200 hover:bg-indigo-50 font-semibold
   }
 
   .dashboard-cards-div {
@@ -96,8 +107,7 @@
   }
 
   .card-container {
-    @apply flex-center flex-col m-2 p-2 border-4 bg-violet-100 hover:bg-slate-50 border-indigo-800 
-    rounded-e-4xl rounded-s-lg
+    @apply flex-center flex-col m-2 p-2 border-4 bg-violet-100 hover:bg-slate-50 border-indigo-800 rounded-e-4xl rounded-s-lg
   }
 
   .footer-div {
@@ -129,16 +139,15 @@
   }
 
   .flashcard-endings-row {
-    @apply flex-center gap-4 w-full 
+    @apply flex-center gap-4 w-full
   }
 
   .pronoun-container {
-    @apply w-1/2  p-1 text-center rounded-md border-indigo-400 border-y-1 
-    border-x-3 mb-1 bg-indigo-200 
+    @apply w-1/2 p-1 text-center rounded-md border-indigo-400 border-y-1 border-x-3 mb-1 bg-indigo-200
   }
 
   .ending-container {
-    @apply w-1/2 md:w-1/4 p-1 text-center rounded-md border-indigo-300 border-y-1 border-x-3  mb-1 bg-indigo-100
+    @apply w-1/2 md:w-1/4 p-1 text-center rounded-md border-indigo-300 border-y-1 border-x-3 mb-1 bg-indigo-100
   }
 
   .tense-highlight {
@@ -162,7 +171,7 @@
   }
 
   .practice-subheading {
-    @apply flex-center 
+    @apply flex-center
   }
 
   .practice-btn-container {
@@ -170,11 +179,11 @@
   }
 
   .practice-complete-div {
-    @apply flex-center flex-col m-6 p-4 
+    @apply flex-center flex-col m-6 p-4
   }
 
   .quizcard-div {
-    @apply flex-center mx-10 p-4 flex-col border-2  border-indigo-900 rounded-xl hover:bg-slate-100
+    @apply flex-center mx-10 p-4 flex-col border-2 border-indigo-900 rounded-xl
   }
 
   .quizcard-text-container {

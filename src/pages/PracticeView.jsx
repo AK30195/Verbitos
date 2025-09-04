@@ -107,7 +107,6 @@ function PracticeView() {
             <FilterSelect
               category='tenses'
               options={groupedTenseOptions}
-              value={selectedTenses}
               onChange={(selected) => setSelectedTenses(selected || [])}
             />
             <FilterSelect
@@ -165,7 +164,11 @@ function PracticeView() {
         <div className='practice-complete-div'>
           <h2>Practice Complete 🎉</h2>
           <div className='practice-btn-container'>
-            <button onClick={() => setStage("setup")}>
+            <button onClick={() => {
+              setStage("setup");
+              setPracticeLength(0);
+              setSelectedGroups([])
+            }}>
             Start Again
           </button>
           </div>

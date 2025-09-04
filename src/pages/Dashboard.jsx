@@ -22,7 +22,7 @@ function Dashboard() {
           />
           <Card 
             header="Tenses"
-            text='Confused about tenses? Use our handy flowchart to see when to use each tense!'
+            text='Confused about tenses? Check out our guide to tenses & moods!'
             link="/moods-tenses"
           />
         </div>
