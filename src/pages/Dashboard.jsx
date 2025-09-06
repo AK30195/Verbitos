@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import DashCard from "../components/DashCard";
 import Hero from "../components/Hero";
 
 
@@ -10,17 +10,17 @@ function Dashboard() {
       <div className="dashboard-main">
         <Hero />
         <div className="dashboard-cards-div">
-          <Card 
+          <DashCard 
             header="Flashcards"
             text='Use our flashcards to help you memorise tense endings.'
             link="/flashcards"
           />
-          <Card 
+          <DashCard 
             header="Practice Mode"
             text='Practice conjugating verbs. Choose your tense and verb group.'
             link="/practice"
           />
-          <Card 
+          <DashCard 
             header="Tenses"
             text='Confused about tenses? Check out our guide to tenses & moods!'
             link="/moods-tenses"

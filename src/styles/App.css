@@ -6,7 +6,7 @@
   }
 
   main {
-    @apply flex-grow
+    @apply flex-grow pt-16
   }
 
   footer {
@@ -18,15 +18,15 @@
   }
 
   h2 {
-    @apply justify-center text-center text-2xl font-semibold;
+    @apply justify-center text-center text-2xl font-semibold text-pretty;
   }
 
   h3 {
-    @apply flex-center text-xl font-semibold;
+    @apply flex-center text-xl font-semibold text-pretty text-center;
   }
 
   h4 {
-    @apply flex-center text-lg font-semibold;
+    @apply flex-center text-lg font-semibold text-pretty text-center;
   }
 
   p {
@@ -57,7 +57,7 @@
   }
 
   .navbar {
-    @apply bg-gray-800 text-gray-200 px-6 py-3 shadow-md sticky top-0 z-50;
+    @apply bg-gray-800 text-gray-200 w-full px-6 py-3 shadow-md fixed top-0 z-50;
   }
 
   .nav-links-container {

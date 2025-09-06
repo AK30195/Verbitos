@@ -1,5 +1,5 @@
 
-function Card({ header, text, link }) {
+function DashCard({ header, text, link }) {
   return (
     <div className="card-container">
       <div>
@@ -18,4 +18,4 @@ function Card({ header, text, link }) {
   )
 }
 
-export default Card;
+export default DashCard;
