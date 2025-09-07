@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Logo from "../assets/Verbitos.svg?react";
 import '../styles/App.css';
 
 export default function Navbar() {
@@ -10,17 +11,18 @@ export default function Navbar() {
             <NavLink
               to="/"
               end
+              aria-label="Home"
               className={({ isActive }) =>
                 `hover:text-white transition-colors ${isActive ? "text-white font-semibold border-b-2 border-indigo-400" : ""
                 }`
               }
             >
-              Dashboard
+              <Logo className='logo' />
             </NavLink>
           </li>
         </div>
         <div className="nav-links-div">
-           <li className="nav-link">
+          <li className="nav-link">
             <NavLink
               to="/moods-tenses"
               className={({ isActive }) =>
