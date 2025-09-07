@@ -89,14 +89,8 @@ function PracticeView() {
 
   return (
     <>
-      <DataFetcher
-        loading={verbsLoading || pronounsLoading || moodsLoading || tensesLoading || groupsLoading}
-        error={verbsError || pronounsError || moodsError || tensesError || groupsError}
-        loadingText="Fetching practice data..."
-      >
-      </DataFetcher>
       <div className='practice-heading'>
-        <h2>Conjugation Practice</h2>
+        <h1>Conjugation Practice</h1>
       </div>
       {stage === "setup" && (
         <>
@@ -146,19 +140,26 @@ function PracticeView() {
         </>
       )}
       {stage === "practice" && questionPool.length > 0 && (
-        <QuizCard
-          key={`${questionPool[quizCardIdx].verb.verb_id}-${questionPool[quizCardIdx].tense.tense_id}-${questionPool[quizCardIdx].pronoun.pp_id}`}
-          verb={questionPool[quizCardIdx].verb}
-          tense={questionPool[quizCardIdx].tense}
-          pronoun={questionPool[quizCardIdx].pronoun}
-          onNext={() => {
-            if (quizCardIdx + 1 < questionPool.length) {
-              setQuizCardIdx(quizCardIdx + 1);
-            } else {
-              setStage("finished");
-            }
-          }}
-        />
+        <>
+          <DataFetcher
+            loading={verbsLoading || pronounsLoading || moodsLoading || tensesLoading || groupsLoading}
+            error={verbsError || pronounsError || moodsError || tensesError || groupsError}
+          >
+          </DataFetcher>
+          <QuizCard
+            key={`${questionPool[quizCardIdx].verb.verb_id}-${questionPool[quizCardIdx].tense.tense_id}-${questionPool[quizCardIdx].pronoun.pp_id}`}
+            verb={questionPool[quizCardIdx].verb}
+            tense={questionPool[quizCardIdx].tense}
+            pronoun={questionPool[quizCardIdx].pronoun}
+            onNext={() => {
+              if (quizCardIdx + 1 < questionPool.length) {
+                setQuizCardIdx(quizCardIdx + 1);
+              } else {
+                setStage("finished");
+              }
+            }}
+          />
+        </>
       )}
       {stage === "finished" && (
         <div className='practice-complete-div'>
@@ -169,8 +170,8 @@ function PracticeView() {
               setPracticeLength(0);
               setSelectedGroups([])
             }}>
-            Start Again
-          </button>
+              Start Again
+            </button>
           </div>
         </div>
       )}

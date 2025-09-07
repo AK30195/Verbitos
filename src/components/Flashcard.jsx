@@ -72,9 +72,6 @@ function Flashcard({ tense, verb_group, pronouns }) {
               <div>
                 <p>Formed by {tense.conjugation_method} </p>
               </div>
-              <div>
-                <p>Example - </p>
-              </div>
             </div>
           </div>
         )

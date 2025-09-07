@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import './App.css';
+
+@layer base {
+
+
+}
+
+@layer components {
+  .heading-div {
+    @apply p-4
+  }  
+}

@@ -7,6 +7,7 @@ import useTensesGroupedByMood from '../hooks/useTensesGroupedByMood.js';
 import usePronouns from '../hooks/usePronouns.js';
 import useMoods from '../hooks/useMoods.js';
 import DataFetcher from '../components/DataFetcher.jsx';
+import '../styles/FlashcardView.css'
 
 function FlashcardView() {
 
@@ -52,11 +53,17 @@ function FlashcardView() {
 
   return (
     <div>
-      <DataFetcher
-        loading={moodsLoading || tensesLoading || groupsLoading || pronounsLoading}
-        error={moodsError || tensesError || groupsError || pronounsError}
-        loadingText='Fetching flashcard data...'
-      ></DataFetcher>
+      <div className='heading-div'>
+        <h1>Flashcards</h1>
+      </div>
+      <div>
+        <p>Use our falshcards to help you memorise conjugations for
+          the various different tenses
+        </p>
+        <p>
+          Choose which tenses and verb groups you want to work on below.
+        </p>
+      </div>
       <div className='filter-select-container'>
         <FilterSelect
           category='tenses'
@@ -74,6 +81,13 @@ function FlashcardView() {
           onChange={(selected) => setSelectedGroups(selected || [])}
         />
       </div>
+      {!flashcards &&
+        <DataFetcher
+          loading={moodsLoading || tensesLoading || groupsLoading || pronounsLoading}
+          error={moodsError || tensesError || groupsError || pronounsError}
+        >
+        </DataFetcher>
+      }
       <ul>
         {flashcards}
       </ul>

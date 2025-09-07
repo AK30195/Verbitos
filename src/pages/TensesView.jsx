@@ -207,7 +207,7 @@ function TensesView() {
             />
             <TenseCard
               header={'Negative Imperative'}
-              tenseDescription={'Used to tell someone NOT to do something. Formed using the subjunctive.'}
+              tenseDescription={'Used to tell someone not to do something. Formed using the subjunctive.'}
               examples={[
                 '¡No hables tan rápido! - Don’t speak so fast!',
                 'No comas eso. - Don’t eat that.',
