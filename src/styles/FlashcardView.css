@@ -9,5 +9,9 @@
 @layer components {
   .heading-div {
     @apply p-4
-  }  
+  } 
+  
+  .content-container {
+    @apply min-h-dvh
+  }
 }

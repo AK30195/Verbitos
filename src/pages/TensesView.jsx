@@ -83,7 +83,7 @@ function TensesView() {
             </div>
             <div className="text-container">
               <p>For most tenses you will conjugate verbs using the following formula -</p>
-              <p><span className="primary-highlight">Pronoun</span> + verb stem/infinitive + <span className="secondary-highlight">ending</span></p>
+              <p>Pronoun + <span className="primary-highlight">verb stem/infinitive</span> + <span className="secondary-highlight">ending</span></p>
               <p>You will see when learning different tenses in Spanish that some are conjugated with the verb stem and others using the infinitive.
                 So what's the difference? The verb stem is formed by removing the last two letters from the infinitive.
               </p>
@@ -92,10 +92,20 @@ function TensesView() {
                 becomes <span className="tertiary-highlight">yo hablo</span> once conjugated in the first person singular.
               </p>
               <p>
-                Whereas in the simple future tense which is conjugated using the infiitive, the first person singular is -
+                Whereas in the simple future tense which is conjugated using the infinitive, the first person singular is -
               </p>
               <p>
                 yo + <span className="primary-highlight">infinitive (hablar)</span> + <span className="secondary-highlight">ending (é)</span> = <span className="tertiary-highlight">yo hablaré</span>
+              </p>
+              <p>
+                It's also worth knowing that Spanish speakers often exclude pronouns when speaking. This is because we can figure out 
+                the pronoun based on the way the verb is conjugated unlike in English where some pronouns use the same verb conjugation.
+                So it would be very common to hear someone say just <span className="tertiary-highlight">'hablo'</span> or <span className="tertiary-highlight">'hablaré'</span>.
+              </p>
+              <p>
+                There are 14 tenses that are used commonly in modern Spanish. This page will describe all of them with examples. Once you get a grasp of what there
+                is to learn you can use our <a className="paragraph-link" href="/flashcards">Flashcards</a> to memorise tense conjugation endings and
+                our <a className="paragraph-link" href="/practice">Practice Mode</a> to test your knowledge.
               </p>
             </div>
           </div>
@@ -182,15 +192,6 @@ function TensesView() {
                 'Si yo fuera rico, viajaría por el mundo. - If I were rich, I would travel the world.',
                 'Quería que vinieras a mi fiesta. - I wanted you to come to my party.',
                 'Dudaba que ellos estudiaran tanto. - I doubted that they studied that much.'
-              ]}
-            />
-            <TenseCard
-              header={'Future Subjunctive (rare/archaic)'}
-              tenseDescription={'The Future Subjunctive is rarely used in modern Spanish but may appear in legal documents or older texts.'}
-              examples={[
-                'Si alguien encontrare este documento... - If someone were to find this document...',
-                'Donde estuviere el tesoro, allí estará tu corazón. - Wherever the treasure may be, there your heart will be.',
-                'El que lo hiciere será castigado. - Whoever may do it will be punished.'
               ]}
             />
             <TenseCard

@@ -52,13 +52,13 @@ function FlashcardView() {
   const flashcards = getFilteredFlashcards();
 
   return (
-    <div>
+    <div className='content-container'>
       <div className='heading-div'>
         <h1>Flashcards</h1>
       </div>
       <div>
-        <p>Use our falshcards to help you memorise conjugations for
-          the various different tenses
+        <p>Use our flashcards to help you memorise conjugations for
+          the various different tenses. Click to flip a flashcard.
         </p>
         <p>
           Choose which tenses and verb groups you want to work on below.

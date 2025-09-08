@@ -56,6 +56,10 @@
     @apply flex-center p-1 h-20 w-19 md:w-30 text-center text-lg
   }
 
+  .paragraph-link {
+    @apply font-bold underline text-indigo-400
+  }
+
   .mood-div {
     @apply flex-center flex-col border-t-1 border-indigo-600 m-1
   }
