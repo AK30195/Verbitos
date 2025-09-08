@@ -2,7 +2,7 @@
 function Footer() {
     return (
         <div className="footer-div">
-            <p>Verbo 2025</p>
+            <p>Verbitos 2025</p>
         </div>
     )
 }

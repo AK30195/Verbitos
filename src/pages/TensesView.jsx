@@ -1,5 +1,6 @@
 import * as motion from "motion/react-client";
 import TenseCard from "../components/TenseCard";
+import TenseEndingsTable from "../components/TenseEndingsTable";
 import '../styles/TensesView.css';
 
 
@@ -59,15 +60,44 @@ function TensesView() {
               'comer' is the equivalent of 'to eat'.
             </p>
             <p>Verb infinitives in Spanish will always end in - </p>
-            <p><span className="ending-highlight">'ar'</span> e.g. hablar - to speak</p>
-            <p><span className="ending-highlight">'er'</span> e.g. aprender - to learn</p>
-            <p><span className="ending-highlight">'ir'</span> e.g. vivir - to live.</p>
+            <p><span className="primary-highlight">'ar'</span> e.g. hablar - to speak</p>
+            <p><span className="primary-highlight">'er'</span> e.g. aprender - to learn</p>
+            <p><span className="primary-highlight">'ir'</span> e.g. vivir - to live.</p>
 
             <p>
               Each verb group has its own conjugation pattern for each tense. These patterns
               are comprised of different verb endings based on the personal pronoun being used. See the table
               below which shows the verb endings for the present tense.
             </p>
+            <TenseEndingsTable
+              tense_id={1}
+            />
+            <div className="text-container">
+              <p>The pronouns used in the table above are translated as -</p>
+              <p><span className="primary-highlight">yo</span> - <span className="secondary-highlight">I</span></p>
+              <p><span className="primary-highlight">tú</span> - <span className="secondary-highlight">you</span></p>
+              <p><span className="primary-highlight">él/ ella/ usted</span> - <span className="secondary-highlight">he/ she/ you(formal)</span></p>
+              <p><span className="primary-highlight">nosotros</span> - <span className="secondary-highlight">we</span></p>
+              <p><span className="primary-highlight">vosotros</span> - <span className="secondary-highlight">you (plural)</span></p>
+              <p><span className="primary-highlight">ellos/ ellas/ ustedes</span> - <span className="secondary-highlight">they(masc.)/ they(fem.)/ you (plural formal)</span></p>
+            </div>
+            <div className="text-container">
+              <p>For most tenses you will conjugate verbs using the following formula -</p>
+              <p><span className="primary-highlight">Pronoun</span> + verb stem/infinitive + <span className="secondary-highlight">ending</span></p>
+              <p>You will see when learning different tenses in Spanish that some are conjugated with the verb stem and others using the infinitive.
+                So what's the difference? The verb stem is formed by removing the last two letters from the infinitive.
+              </p>
+              <p>
+                So <span className="primary-highlight">hablar(to speak)</span> for example has a stem of <span className="secondary-highlight">'habl'</span> which 
+                becomes <span className="tertiary-highlight">yo hablo</span> once conjugated in the first person singular.
+              </p>
+              <p>
+                Whereas in the simple future tense which is conjugated using the infiitive, the first person singular is -
+              </p>
+              <p>
+                yo + <span className="primary-highlight">infinitive (hablar)</span> + <span className="secondary-highlight">ending (é)</span> = <span className="tertiary-highlight">yo hablaré</span>
+              </p>
+            </div>
           </div>
         </div>
         <div className="section-container">

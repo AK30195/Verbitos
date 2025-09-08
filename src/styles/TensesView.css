@@ -16,7 +16,7 @@
   }
 
   .section-container {
-    @apply p-2 m-2 flex-center flex-col lg:w-3/4
+    @apply p-2 m-2 flex-center flex-col lg:w-3/4 
   }
 
   .text-container {
@@ -36,6 +36,26 @@
     md:w-1/2 
   }
 
+  .endings-table {
+    @apply flex-center flex-col mt-2 mb-4
+  }
+
+  .endings-table-header {
+    @apply flex-center gap-1 font-semibold bg-indigo-50 rounded-t-lg
+  }
+
+  .endings-table-row {
+    @apply flex-center gap-1 border-t-2 border-indigo-500
+  }
+
+  .endings-table-cell {
+    @apply flex-center p-1 h-20 w-20 md:w-30 text-center text-lg border-r-2 border-indigo-500
+  }
+
+  .endings-table-end-cell {
+    @apply flex-center p-1 h-20 w-19 md:w-30 text-center text-lg
+  }
+
   .mood-div {
     @apply flex-center flex-col border-t-1 border-indigo-600 m-1
   }
@@ -45,7 +65,7 @@
   }
 
   .tense-card-container {
-    @apply m-2 border-4 outline-1 w-3/4 md:w-2/3 lg:w-1/2 outline-indigo-500 rounded-2xl shadow-xl border-indigo-300
+    @apply m-2 border-4 outline-1 w-full md:w-2/3 lg:w-1/2 outline-indigo-500 rounded-2xl shadow-xl border-indigo-300
   }
 
   .tense-card-top {
@@ -56,4 +76,11 @@
     @apply border-t-2 border-indigo-500 p-1
   }
 
+  .tense-card-header {
+    @apply border-b-2 pb-2 border-indigo-600
+  }
+
+  .tense-card-example {
+    @apply border-b-1 border-indigo-400
+  }
 }

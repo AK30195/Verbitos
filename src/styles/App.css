@@ -154,12 +154,16 @@
     @apply w-1/2 md:w-1/4 p-1 text-center rounded-md border-indigo-300 border-y-1 border-x-3 mb-1 bg-indigo-100
   }
 
-  .tense-highlight {
+  .primary-highlight {
     @apply text-indigo-400
   }
 
-  .ending-highlight {
+  .secondary-highlight {
     @apply text-fuchsia-500
+  }
+
+  .tertiary-highlight {
+    @apply text-blue-400
   }
 
   .filter-select-container {

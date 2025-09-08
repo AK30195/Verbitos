@@ -42,7 +42,7 @@ function Flashcard({ tense, verb_group, pronouns }) {
         (
           <div  className="flashcard-front">
             <div className="flashcard-content-div" onClick={() => setIsFlipped(true)}>
-              <p>List the <span className="tense-highlight">{tense.name}</span>  tense endings for regular verbs ending with <span className="ending-highlight">'{verb_group.inf_ending}'</span></p>
+              <p>List the <span className="primary-highlight">{tense.name}</span>  tense endings for regular verbs ending with <span className="secondary-highlight">'{verb_group.inf_ending}'</span></p>
             </div>
           </div>
         )
