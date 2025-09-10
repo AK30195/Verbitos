@@ -66,8 +66,8 @@ function TensesView() {
 
             <p>
               Each verb group has its own conjugation pattern for each tense. These patterns
-              are comprised of different verb endings based on the personal pronoun being used. See the table
-              below which shows the verb endings for the present tense.
+              are comprised of different verb endings based on the personal pronoun being used. All regular 
+              verbs will follow the same pattern. See the table below which shows the verb endings for the present tense.
             </p>
             <TenseEndingsTable
               tense_id={1}
@@ -99,7 +99,7 @@ function TensesView() {
               </p>
               <p>
                 It's also worth knowing that Spanish speakers often exclude pronouns when speaking. This is because we can figure out 
-                the pronoun based on the way the verb is conjugated unlike in English where some pronouns use the same verb conjugation.
+                the pronoun based on the way the verb is conjugated, unlike in English where some pronouns use the same verb conjugation.
                 So it would be very common to hear someone say just <span className="tertiary-highlight">'hablo'</span> or <span className="tertiary-highlight">'hablaré'</span>.
               </p>
               <p>
@@ -115,7 +115,9 @@ function TensesView() {
             <div className="text-container">
               <h2>Indicative Tenses</h2>
               <p>The indicative is the first place all Spanish learners should start as it is
-                the most commonly used. Learn about the different indicative tenses below!
+                the most commonly used. It can thought of as the default mood that is used to discuss 
+                information that is factual, certain or objective. Tenses in the indicative will be the 
+                ones you will encounter most often in everyday communication.
               </p>
             </div>
             <TenseCard
