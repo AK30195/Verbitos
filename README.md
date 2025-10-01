@@ -1,12 +1,13 @@
-# React + Vite
+# Verbitos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a web application built to assist Spanish learners with mastering verb conjugations. It contains information about the various tenses and verb
+conjugation patterns seen in Spanish. The site provides users with flashcards and a practice mode. The user can select which tenses or verb groups they would
+like to focus on and the site will generate quizzes and flashcards from the database which match the parameters selected by the user.
 
-Currently, two official plugins are available:
+The site is available here - https://verbitos.com/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+I intend to add functionality to the site and to expand the database to include a more comprehensive selection of verbs.
+Potential additions will include:
+- Mode for practicing irregular verbs
+- Extra articles and content for learners
+- Spaced repetition functionality similar to Anki or similar tools
